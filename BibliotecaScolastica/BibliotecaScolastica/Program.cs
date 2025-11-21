@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BibliotecaScolastica;
+using System;
 
 class Program
 {
@@ -14,12 +15,49 @@ class Program
         int orarioApertura = int.Parse(Console.ReadLine());
         Console.WriteLine("Inserire l'orario di chiusura: ");
         int orariochiusura = int.Parse(Console.ReadLine());
+        Biblioteca biblioteca = new Biblioteca(nomeBiblioteca, indirizzo, orarioApertura, orariochiusura);
+        biblioteca.salva();
         do
         {
-            Console.WriteLine("Inserisci il nome del libro: ");
+            Console.WriteLine("Inserisci il titolo del libro: ");
             string nomeLibro = Console.ReadLine();
-
+            Console.WriteLine("Inserisci l'autore del libro: ");
+            string autoreLibro = Console.ReadLine();
+            Console.WriteLine("Inserisci l'anno di pubblicazione: ");
+            int annoPubblicazione = int.Parse(Console.ReadLine());
+            Console.WriteLine("Inserisci l'editore: ");
+            string editore = Console.ReadLine();
+            Console.WriteLine("Inserisci il numero di pagine: ");
+            int nPagine = int.Parse(Console.ReadLine());
+            Libro libro = new Libro(autoreLibro, nomeLibro, annoPubblicazione, editore, nPagine);
+            biblioteca.aggiungiLibro(libro);
+            biblioteca.salvaLibro();
+            Console.WriteLine("Vuoi aggiungere altri libri? s per continuare...");
+            if(Console.ReadLine() == "s")
+            {
+                ancoraLibro = true;
+            }
+            else
+            {
+                ancoraLibro = false;
+            }
         } while (ancoraLibro);
+        Console.WriteLine("Scrivere 1 per cercare un libro con il titolo, " +
+            "2 per cercare tutti i libri per autore," +
+            "3 per determinare il numero di libri, ");
+        switch (Console.ReadLine())
+        {
+            case "1":
+                Console.WriteLine("Inserisci il nome dell'titolo:");
+                biblioteca.cercaPerTitolo(Console.ReadLine());
+                break;
 
+            case "2":
+                Console.WriteLine("Inserisci il nome dell'autore: ");
+                biblioteca.cercaPerAutore(Console.ReadLine());
+                break;
+                case "3":
+                Console.WriteLine(biblioteca.numeroLibri());
+        }
     }
 }
