@@ -30,8 +30,7 @@ class Program
             Console.WriteLine("Inserisci il numero di pagine: ");
             int nPagine = int.Parse(Console.ReadLine());
             Libro libro = new Libro(autoreLibro, nomeLibro, annoPubblicazione, editore, nPagine);
-            biblioteca.aggiungiLibro(libro);
-            biblioteca.salvaLibro();
+            
             Console.WriteLine("Vuoi aggiungere altri libri? s per continuare...");
             if(Console.ReadLine() == "s")
             {
@@ -41,7 +40,10 @@ class Program
             {
                 ancoraLibro = false;
             }
+            biblioteca.aggiungiLibro(libro);
+            biblioteca.salvaLibri();
         } while (ancoraLibro);
+
         Console.WriteLine("Scrivere 1 per cercare un libro con il titolo, " +
             "2 per cercare tutti i libri per autore," +
             "3 per determinare il numero di libri, ");
@@ -49,15 +51,16 @@ class Program
         {
             case "1":
                 Console.WriteLine("Inserisci il nome dell'titolo:");
-                biblioteca.cercaPerTitolo(Console.ReadLine());
+                biblioteca.cercaLibroPerTitolo(Console.ReadLine());
                 break;
 
             case "2":
                 Console.WriteLine("Inserisci il nome dell'autore: ");
-                biblioteca.cercaPerAutore(Console.ReadLine());
+                biblioteca.cercaLibroPerAutore(Console.ReadLine());
                 break;
                 case "3":
                 Console.WriteLine(biblioteca.numeroLibri());
+                break;
         }
     }
 }

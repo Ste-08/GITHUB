@@ -86,7 +86,7 @@ namespace BibliotecaScolastica
                 foreach (Libro libro in _libri)
                 {
                     sr.ReadLine();
-                    if (libro.titolo == titoloDaCercare)
+                    if (libro.Titolo == titoloDaCercare)
                     {
                         Console.WriteLine(libro);
                     }
@@ -101,7 +101,7 @@ namespace BibliotecaScolastica
                 foreach (Libro libro in _libri)
                 {
                     sr.ReadLine();
-                    if (libro.autore == autoreDaCercare)
+                    if (libro.Autore == autoreDaCercare)
                     {
                         Console.WriteLine(libro);
                     }

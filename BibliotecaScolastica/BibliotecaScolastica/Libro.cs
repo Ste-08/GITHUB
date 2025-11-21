@@ -14,6 +14,19 @@ namespace BibliotecaScolastica
         private string editore;
         private int numeroPagine;
 
+        public Libro(string autore, string titolo, int annoPublicazione, string editore, int numeroPagine, string autore, string titolo, int annoPublicazione, string editore, int numeroPagine)
+        {
+            Autore = autore;
+            Titolo = titolo;
+            AnnoPublicazione = annoPublicazione;
+            Editore = editore;
+            NumeroPagine = numeroPagine;
+            Autore = autore;
+            Titolo = titolo;
+            AnnoPublicazione = annoPublicazione;
+            Editore = editore;
+            NumeroPagine = numeroPagine;
+        }
 
         public string Autore
         {
